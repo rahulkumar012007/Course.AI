@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'https://course-ai-backend-dlb7.onrender.com/',
+  baseURL: 'https://course-ai-backend-dlb7.onrender.com/api',
   withCredentials: true
 })
 
