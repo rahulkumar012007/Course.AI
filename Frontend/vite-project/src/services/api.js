@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: 'https://course-ai-backend-dlb7.onrender.com/'
 })
 
 // Har request mein token lagao automatically
