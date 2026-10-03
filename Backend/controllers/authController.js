@@ -30,7 +30,9 @@ exports.register = async (req, res) => {
     }
 
     // User banao
+    console.log("Creating user...");
     const user = await User.create({ name, email, password });
+    console.log("User created:", user);
     const token = generateToken(user._id);
 
     res.status(201).json({
@@ -44,6 +46,7 @@ exports.register = async (req, res) => {
     });
 
   } catch (err) {
+    console.log("hello....");
     res.status(500).json({ message: err.message });
   }
 };

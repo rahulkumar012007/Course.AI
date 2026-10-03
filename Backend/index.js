@@ -8,10 +8,16 @@ const path = require('path');
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: 'http://localhost:5173', // React app ka URL
-  credentials: true
-}));
+app.use(cors(
+  {
+    origin:[
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:3000",
+    ],
+    credentials:true,
+  }
+));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -27,6 +33,8 @@ app.get('/', (req, res) => {
 });
 
 // MongoDB se connect karo
+console.log(" MONGO_URI ",process.env.MONGO_URI);
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected!');

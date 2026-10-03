@@ -13,7 +13,8 @@ const {
 // Multer config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    // cb(null, 'uploads/');
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname);
@@ -33,8 +34,16 @@ const upload = multer({
 });
 
 // Uploads folder banao
+// const fs = require('fs');
+// if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
+
+// new changes
+// const path = require('path');
 const fs = require('fs');
-if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
+
+const uploadDir = path.join(__dirname, '..', 'uploads');
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+//
 
 router.post('/', protect, upload.single('pdf'), uploadDocument);
 router.get('/', protect, getDocuments);

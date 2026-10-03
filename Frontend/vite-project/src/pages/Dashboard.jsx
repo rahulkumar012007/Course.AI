@@ -12,6 +12,8 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [showUpload, setShowUpload] = useState(false)
 
+
+
   // Documents fetch karo
   const fetchDocuments = async () => {
     try {
@@ -29,10 +31,10 @@ export default function Dashboard() {
   }, [])
 
   // Upload complete hone ke baad
-  const handleUploadSuccess = (newDoc) => {
-    setDocuments(prev => [newDoc, ...prev])
-    setShowUpload(false)
-  }
+  // const handleUploadSuccess = (newDoc) => {
+  //   setDocuments(prev => [newDoc, ...prev])
+  //   setShowUpload(false)
+  // }
 
   // Date format karo
   const formatDate = (dateStr) => {
@@ -42,6 +44,16 @@ export default function Dashboard() {
       year: 'numeric'
     })
   }
+
+  //kuch new lines
+  const handleUploadSuccess = (newDoc) => {
+  const normalizedDoc = {
+    ...newDoc,
+    _id: newDoc._id || newDoc.id  // ✅ dono handle karo
+  }
+  setDocuments(prev => [normalizedDoc, ...prev])
+  setShowUpload(false)
+}
 
   return (
     <div className="min-h-screen bg-gray-50">

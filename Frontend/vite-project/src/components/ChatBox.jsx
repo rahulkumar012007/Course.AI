@@ -7,6 +7,26 @@ export default function ChatBox({ documentId }) {
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef(null)
 
+
+  //new thing added 
+  // handleSend mein — id add karo har message mein
+// const userMessage = {
+//   role: 'user',
+//   content: input.trim(),
+//   timestamp: new Date(),
+//   _id: Date.now() + '_user'  // ✅ unique id
+// }
+
+// setMessages(prev => [...prev, userMessage])
+
+// ...API response mein bhi:
+// setMessages(prev => [...prev, {
+//   role: 'assistant',
+//   content: data.reply,
+//   timestamp: new Date(),
+//   _id: Date.now() + '_ai'  // ✅ unique id
+// }])
+
   // Chat history load karo
   useEffect(() => {
     getChatHistory(documentId)
