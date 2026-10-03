@@ -1,5 +1,6 @@
 const Document = require('../models/Document');
-const pdf = require('pdf-parse');  // ✅ fixed
+// const pdf = require('pdf-parse');  // ✅ fixed
+const pdf = require('pdf-parse-debugging-disabled');
 const fs = require('fs');
 
 async function generateSummary(text) {
